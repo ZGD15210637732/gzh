@@ -3,7 +3,8 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
-import './rem'
+// import './rem'
+import 'lib-flexible/flexible.js'
 import  store from './store/idnex'
 Vue.config.productionTip = false
 

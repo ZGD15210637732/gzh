@@ -13,8 +13,10 @@
   },
   "dependencies": {
     "axios": "^0.19.0",
+    "lib-flexible": "^0.3.2",
     "mini-ui": "^0.0.1-alpha",
     "mint-ui": "^2.2.13",
+    "postcss-px2rem-exclude": "^0.0.6",
     "postcss-pxtorem": "^4.0.1",
     "vant": "^2.1.7",
     "vue": "^2.5.2",
@@ -50,6 +52,7 @@
     "postcss-import": "^11.0.0",
     "postcss-loader": "^2.0.8",
     "postcss-url": "^7.2.1",
+    "px2rem-loader": "^0.1.9",
     "rimraf": "^2.6.0",
     "semver": "^5.3.0",
     "shelljs": "^0.7.6",

@@ -45,7 +45,7 @@
           //   Category: '',
           // }
         ],
-        Category:'',
+        Category: '',
         content: [
           { text: '女装', value: 0 },
           { text: '男装', value: 1 },
@@ -76,7 +76,7 @@
       },
       fn() {
         console.log(this.Category)
-        Axios.post('http://192.168.1.186:8080/userbaby/add', {
+        Axios.post('http://192.168.1.186:8010/baby/userbaby/add', {
           username: this.me.name,
           mobile: this.me.phone,
           kind: this.Category,
@@ -91,8 +91,9 @@
         this.$store.commit('All', this.me)
       }
     },
-    created() {
 
+    created() {
+     
     },
   };
 </script>

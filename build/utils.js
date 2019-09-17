@@ -18,7 +18,8 @@ exports.cssLoaders = function (options) {
   const cssLoader = {
     loader: 'css-loader',
     options: {
-      sourceMap: options.sourceMap
+      sourceMap: options.sourceMap,
+      importLoaders:2
     }
   }
 
@@ -28,6 +29,13 @@ exports.cssLoaders = function (options) {
       sourceMap: options.sourceMap
     }
   }
+
+  // const px2remLoader = {
+  //   loader: 'px2rem-loader',
+  //   options: {
+  //   remUnit:72 //设计稿的宽度 除以 10，现阶段一般设计稿的宽度都为750px。如果基于iPhone5设计则为32.0(320 / 10 = 32)
+  //   }
+  //  }
 
   // generate loader string to be used with extract text plugin
   function generateLoaders (loader, loaderOptions) {
@@ -47,7 +55,8 @@ exports.cssLoaders = function (options) {
     if (options.extract) {
       return ExtractTextPlugin.extract({
         use: loaders,
-        fallback: 'vue-style-loader'
+        fallback: 'vue-style-loader',
+        publicPath:'../../'  
       })
     } else {
       return ['vue-style-loader'].concat(loaders)

@@ -10,22 +10,22 @@
         <div class="list">
             <ul>
                 <li>
-                    <p>50万</p>
+                    <p>{{content.categorysales}}</p>
                     <p class="two">销量</p>
                 </li>
                 <li>
-                    <p>200-2000元</p>
+                    <p>{{content.categorypricebetween}}</p>
                     <p class="two">价格区间</p>
                 </li>
                 <li>
-                    <p>4.5%</p>
+                    <p>{{content.categoryliren}}%</p>
                     <p class="two">利润比</p>
                 </li>
             </ul>
         </div>
         <hr>
         <p class="jieshao">
-            阿尼玛(Armain)是世界知名奢侈品牌，1975年由时尚设计大师乔治·阿尼玛(Gi-orgio Armain)创立于意大利米兰，他以使用新型面料以及优良的制作而闻名...
+            {{content.categorydetails}}
         </p>
         <p class="More">更多品牌</p>
         <div class="brand">
@@ -54,6 +54,7 @@
 </template>
 
 <script>
+    import { Dialog } from 'vant'
     import Axios from 'axios'
     export default {
         data() {
@@ -66,18 +67,19 @@
         },
         created() {
             this.a = this.$route.params.id
-            Axios.post('http://192.168.1.186:8080/category/SelectById', {
+            Axios.post('http://192.168.1.186:8010/baby/category/SelectById', {
                 categoryid: this.a
             }).then(res => {
                 this.content = res.data.data
+                console.log(this.content)
             })
-            Axios.post('http://192.168.1.186:8080/category/selectall', {
-                categorykind: '1'
+            Axios.post('http://192.168.1.186:8010/baby/category/selectall', {
+                categorykind: this.information.Category
             }).then(res => {
                 this.content1 = res.data.data
                 for (let i = 0; i < 4; i++) {
-                    let a = parseInt(this.content1.length * Math.random());
-                    this.More.push(this.content1[a])
+                    let item = parseInt(this.content1.length * Math.random());
+                    this.More.push(this.content1[item])
                 }
             })
         },
@@ -87,7 +89,7 @@
             },
             a() {
                 this.a = this.$route.params.id
-                Axios.post('http://192.168.1.186:8080/category/SelectById', {
+                Axios.post('http://192.168.1.186:8010/baby/category/SelectById', {
                     categoryid: this.a
                 }).then(res => {
                     this.content = res.data.data
@@ -96,22 +98,32 @@
         },
         methods: {
             fn() {
-                Axios.post('http://192.168.1.186:8080/message/add', {
-                    username: this.information.name,
-                    mobile: this.information.phone,
-                    categoryname: this.content.categoryname,
-                    messagestatus: '1',
-                    kind: this.information.Category,
-                }).then(res => {
-                    console.log(res)
-                    this.$router.push('../end')
-                })
+                Dialog.confirm({
+                    title: '确认入住',
+                }).then(() => {
+                    Axios.post('http://192.168.1.186:8010/message/add', {
+                        username: this.information.name,
+                        mobile: this.information.phone,
+                        categoryname: this.content.categoryname,
+                        messagestatus: '1',
+                        kind: this.information.Category,
+                    }).then(res => {
+                        console.log(res)
+                        this.$router.push('../end')
+                    })
+                }).catch(() => {
+            
+                });
+
             }
         },
         computed: {
             information() {
                 return this.$store.state.information
             }
+        },
+        components: {
+            [Dialog.name]: Dialog
         },
     }   
 </script>

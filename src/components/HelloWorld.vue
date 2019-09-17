@@ -31,11 +31,11 @@
       }
     },
     created() {
-      Axios.get('https://cnodejs.org/api/v1/topics').then(res => {
-        console.log(res)
-      })
+      // Axios.get('https://cnodejs.org/api/v1/topics').then(res => {
+      //   console.log(res)
+      // })
       console.log(this.first.Symbol, this.two, this.three, this.Category)
-      Axios.post('http://192.168.1.186:8080/category/select', {
+      Axios.post('http://192.168.1.186:8010/baby/category/select', {
         categorykind: this.Category,
         categorylist: [
           { 'fuhao': this.first.Symbol },
@@ -49,7 +49,7 @@
     },
     methods: {
       fn() {
-        Axios.post('http://192.168.1.186:8080/category/vague', {
+        Axios.post('http://192.168.1.186:8010/baby/category/vague', {
           categorykind: this.Category,
           categoryname: this.msg
         }).then(res => {
