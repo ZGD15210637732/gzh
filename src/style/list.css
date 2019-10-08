@@ -1,0 +1,96 @@
+.logo {
+    width: 300px;
+    height: 300px;
+    margin-left: 100px;
+    margin-top: 50px
+}
+
+.content {
+    margin-top: -180px
+}
+
+.title {
+    margin-left: 450px
+}
+
+h3 {
+    height: 100px;
+    line-height: 100px;
+    width: 200px;
+    text-align: center
+}
+
+.Apply {
+    height: 60px;
+    line-height: 60px;
+    width: 200px;
+    text-align: center;
+    background-color: gold;
+    border-radius: 50px
+}
+
+.list {
+    padding-top: 40px;
+    padding-bottom: 60px
+}
+
+.list ul {
+    display: flex;
+    list-style: none;
+    margin-top: 50px
+}
+
+.list ul li {
+    flex: 1;
+    text-align: center
+}
+
+.two {
+    font-size: 25px;
+    color: gray
+}
+
+hr {
+    width: 80%;
+    margin: 0 auto;
+    border: dashed 1px grey
+}
+
+.jieshao {
+    width: 80%;
+    margin: 0 auto;
+    padding: 50px 0px;
+    color: grey
+}
+
+.More {
+    margin-left: 10%;
+    border-left: 5px solid goldenrod;
+    padding-left: 10px
+}
+
+.brand ul {
+    list-style: none;
+    display: flex;
+    margin-top: 40px;
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 50px
+}
+
+.brand ul li {
+    flex: 1;
+    text-align: center
+}
+
+.brand ul li img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    text-align: center
+}
+
+.brand ul li p {
+    margin-top: 20px;
+    font-size: 25px
+}

@@ -6,7 +6,7 @@
       <button @click='fn()'>搜索</button>
     </div>
     <ul>
-      <li v-for='(i,index) in this.content'>{{i.categoryname}}
+      <li v-for='(i,index) in this.content' :key="index">{{i.categoryname}}
         <router-link :to="'./list/'+i.categoryid">
           <span class="list">了解详情</span>
         </router-link>
@@ -25,20 +25,16 @@
     },
     data() {
       return {
-        // radio: '1'
         content: '',
         msg: ''
       }
     },
     created() {
-      // Axios.get('https://cnodejs.org/api/v1/topics').then(res => {
-      //   console.log(res)
-      // })
-      console.log(this.first.Symbol, this.two, this.three, this.Category)
-      Axios.post('http://192.168.1.186:8010/baby/category/select', {
+      console.log(this.two, this.three, this.Category)
+      Axios.post('http://49.234.12.56:8010/baby/category/select', {
         categorykind: this.Category,
         categorylist: [
-          { 'fuhao': this.first.Symbol },
+          { 'fuhao': '' },
           { 'fuhao': this.two.Symbol },
           { 'fuhao': this.three.Symbol }
         ]
@@ -49,7 +45,17 @@
     },
     methods: {
       fn() {
-        Axios.post('http://192.168.1.186:8010/baby/category/vague', {
+        Axios.post('http://49.234.12.56:8010/baby/category/vague', {
+          categorykind: this.Category,
+          categoryname: this.msg
+        }).then(res => {
+          this.content = res.data.data
+        })
+      }
+    },
+    watch: {
+      msg() {
+        Axios.post('http://49.234.12.56:8010/baby/category/vague', {
           categorykind: this.Category,
           categoryname: this.msg
         }).then(res => {
@@ -58,9 +64,6 @@
       }
     },
     computed: {
-      first() {
-        return this.$store.state.first
-      },
       two() {
         return this.$store.state.two
       },
@@ -77,57 +80,5 @@
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-  .search {
-    margin-top: 50px
-  }
-
-  input {
-    width: 62%;
-    margin-left: 8%;
-    height: 60px;
-    line-height: 60px;
-    border-radius: 10px;
-    border: 1px solid grey;
-    padding-left: 10px
-  }
-
-  button {
-    border-radius: 10px;
-    background-color: #4CB6B6;
-    border: solid 1px grey;
-    padding: 10px;
-    width: 150px;
-    text-align: center;
-    color: white
-  }
-
-  h2 {
-    text-align: center;
-    margin-top: 50px;
-    color: #4CB6B6
-  }
-
-  ul {
-    list-style: none;
-  }
-
-  ul li {
-    height: 100px;
-    line-height: 100px;
-    position: relative;
-    border: solid 1px grey;
-    width: 80%;
-    margin: 0 auto;
-    margin-top: 50px;
-    padding-left: 25px;
-    border-radius: 10px;
-    border-left: solid 8px yellowgreen
-  }
-
-  .list {
-    position: absolute;
-    right: 50px;
-    font-size: 20px;
-    color: #4CB6B6
-  }
+   @import '../style/brand.css';
 </style>

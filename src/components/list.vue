@@ -14,7 +14,7 @@
                     <p class="two">销量</p>
                 </li>
                 <li>
-                    <p>{{content.categorypricebetween}}</p>
+                    <p>{{content.categorybetween}}</p>
                     <p class="two">价格区间</p>
                 </li>
                 <li>
@@ -36,18 +36,6 @@
                         <p>{{item.categoryname}}</p>
                     </router-link>
                 </li>
-                <!-- <li>
-                    <img src="../assets/logo1.png" alt="">
-                    <p>飞亚达</p>
-                </li>
-                <li>
-                    <img src="../assets/logo1.png" alt="">
-                    <p>罗西尼</p>
-                </li>
-                <li>
-                    <img src="../assets/logo1.png" alt="">
-                    <p>海鸥</p>
-                </li> -->
             </ul>
         </div>
     </div>
@@ -67,13 +55,13 @@
         },
         created() {
             this.a = this.$route.params.id
-            Axios.post('http://192.168.1.186:8010/baby/category/SelectById', {
+            Axios.post('http://49.234.12.56:8010/baby/category/SelectById', {
                 categoryid: this.a
             }).then(res => {
                 this.content = res.data.data
                 console.log(this.content)
             })
-            Axios.post('http://192.168.1.186:8010/baby/category/selectall', {
+            Axios.post('http://49.234.12.56:8010/baby/category/selectall', {
                 categorykind: this.information.Category
             }).then(res => {
                 this.content1 = res.data.data
@@ -89,7 +77,7 @@
             },
             a() {
                 this.a = this.$route.params.id
-                Axios.post('http://192.168.1.186:8010/baby/category/SelectById', {
+                Axios.post('http://49.234.12.56:8010/baby/category/SelectById', {
                     categoryid: this.a
                 }).then(res => {
                     this.content = res.data.data
@@ -101,7 +89,7 @@
                 Dialog.confirm({
                     title: '确认入住',
                 }).then(() => {
-                    Axios.post('http://192.168.1.186:8010/message/add', {
+                    Axios.post('http://49.234.12.56:8010/baby/message/add', {
                         username: this.information.name,
                         mobile: this.information.phone,
                         categoryname: this.content.categoryname,
@@ -130,100 +118,5 @@
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-    .logo {
-        width: 300px;
-        height: 300px;
-        margin-left: 100px;
-        margin-top: 50px
-    }
-
-    .content {
-        margin-top: -180px
-    }
-
-    .title {
-        margin-left: 450px
-    }
-
-    h3 {
-        height: 100px;
-        line-height: 100px;
-        width: 200px;
-        text-align: center
-    }
-
-    .Apply {
-        height: 60px;
-        line-height: 60px;
-        width: 200px;
-        text-align: center;
-        background-color: gold;
-        border-radius: 50px
-    }
-
-    .list {
-        padding-top: 40px;
-        padding-bottom: 60px
-    }
-
-    .list ul {
-        display: flex;
-        list-style: none;
-        margin-top: 50px
-    }
-
-    .list ul li {
-        flex: 1;
-        text-align: center
-    }
-
-    .two {
-        font-size: 25px;
-        color: gray
-    }
-
-    hr {
-        width: 80%;
-        margin: 0 auto;
-        border: dashed 1px grey
-    }
-
-    .jieshao {
-        width: 80%;
-        margin: 0 auto;
-        padding: 50px 0px;
-        color: grey
-    }
-
-    .More {
-        margin-left: 10%;
-        border-left: 5px solid goldenrod;
-        padding-left: 10px
-    }
-
-    .brand ul {
-        list-style: none;
-        display: flex;
-        margin-top: 40px;
-        width: 80%;
-        margin: 0 auto;
-        margin-top: 50px
-    }
-
-    .brand ul li {
-        flex: 1;
-        text-align: center
-    }
-
-    .brand ul li img {
-        width: 120px;
-        height: 120px;
-        border-radius: 50%;
-        text-align: center
-    }
-
-    .brand ul li p {
-        margin-top: 20px;
-        font-size: 25px
-    }
+   @import '../style/list.css';   
 </style>

@@ -25,9 +25,9 @@ export default new Router({
       component: () => import('../components/list.vue')
     },
     {
-      path: '/HelloWorld',
-      name: 'HelloWorld',
-      component: () => import('../components/HelloWorld.vue')
+      path: '/brand',
+      name: 'brand',
+      component: () => import('../components/brand.vue')
     },
     {
       path: '/end',

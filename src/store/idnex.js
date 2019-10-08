@@ -6,9 +6,6 @@ Vue.use(Vuex);
 const store = new Vuex.Store({
     state: {
         content: '',
-        first: {
-            Symbol: '',
-        },
         two: {
             Symbol: '',
         },
@@ -27,9 +24,6 @@ const store = new Vuex.Store({
         ]
     },
     mutations: {
-        firstclick(state, book) {
-            state.first.Symbol = book.fuhao
-        },
         first1click(state, book) {
             state.two.Symbol = book.fuhao
         },
